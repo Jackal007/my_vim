@@ -32,12 +32,30 @@ function MyDiff()
   endif
 endfunction
 
+"vimrc立即生效
+autocmd! bufwritepost $VIM_HOME/_vimrc source %
+
 "-----------------------------------------------------------
 "themes
 "-----------------------------------------------------------
+" 禁止显示菜单和工具条
+set guioptions-=m
+set guioptions-=T
+" 总是显示状态栏
+set laststatus=2
+" 显示光标当前位置
+set ruler
+" 开启行号显示
+set number
+" 高亮显示当前行/列
+set cursorline
+set cursorcolumn
+" 高亮显示搜索结果
+set hlsearch
+syntax enable
 colorscheme solarized
 set background=dark
-
+let g:solarized_termcolors=256
 
 "------------------------------------------------------------
 " vundle config
@@ -69,7 +87,10 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
 
-Plugin 'vim-airline/vim-airline'
+Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'scrooloose/nerdtree'
+"Plugin 'powerline/powerline'
 Plugin 'Solarized'
 
 " All of your Plugins must be added before the following line
@@ -86,3 +107,20 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+
+"--------------------------------------------------------------------------
+"vim-airline
+"--------------------------------------------------------------------------   
+set t_Co=256  
+set laststatus=2
+"let g:airline_left_sep='>'
+"let g:airline_right_sep='<'
+"let g:airline_detect_modified=1
+"let g:airline_detect_paste=1
+set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 13
+let g:airline_powerline_fonts = 1
+let g:airline_theme='airlineish'
+let g:airline_section_b = '%{strftime("%c")}'
+let g:airline_section_y = 'BN: %{bufnr("%")}'
+let g:airline#extensions#tavline#enabled = 1
