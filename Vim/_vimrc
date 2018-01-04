@@ -33,8 +33,9 @@ function MyDiff()
 endfunction
 
 
-
+"------------------------------------------------------------
 " vundle config
+"------------------------------------------------------------
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
