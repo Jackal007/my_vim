@@ -1,4 +1,4 @@
-﻿source $VIMRUNTIME/vimrc_example.vim
+source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
@@ -95,11 +95,22 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 "------------------------------------------------------------------
 Plugin 'vim-airline/vim-airline'
 
+if !exists('g:airline_symbols')
+let g:airline_symbols = {}
+endif
+let g:airline_left_sep = '▶'
+let g:airline_left_alt_sep = '❯'
+let g:airline_right_sep = '◀'
+let g:airline_right_alt_sep = '❮'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+
+" 是否打开tabline
+" let g:airline#extensions#tabline#enabled = 1
+
 Plugin 'vim-airline/vim-airline-themes'
 let g:airline_theme='bubblegum'
 let g:airline#extensions#tabline#enabled = 1
-" 设置状态栏主题风格
-let g:Powerline_colorscheme='solarized256'
 
 
 "------------------------------------------------------------------
