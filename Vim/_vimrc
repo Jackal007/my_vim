@@ -6,6 +6,7 @@
 colorscheme solarized
 
 " Startup {{{
+" 文件类型检测
 filetype indent plugin on
 
 augroup vimrcEx
@@ -191,6 +192,8 @@ Plugin 'VundleVim/Vundle.vim'
 " ----- NerdTree ----- {{{
 Plugin 'scrooloose/nerdtree'
 
+" 在 vim 启动的时候默认开启 NERDTree（autocmd 可以缩写为 au）
+autocmd VimEnter * NERDTree
 let NERDTreeIgnore=['.idea', '.vscode', 'node_modules', '*.pyc']
 let NERDTreeBookmarksFile = $VIM . '/NERDTreeBookmarks'
 let NERDTreeMinimalUI = 1
@@ -200,6 +203,7 @@ let NERDTreeShowBookmarks = 1
 let g:NERDTreeWinPos = 'right'
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
+set autochdir "设置自动切换工作路劲
 nmap <leader>n :NERDTreeToggle <cr>
 if exists('g:NERDTreeWinPos')
     autocmd vimenter * NERDTree D:\repo
@@ -218,7 +222,6 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 set laststatus=2
-"let g:airline_powerline_fonts = 1
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -226,7 +229,7 @@ endif
 " 是否打开tabline
 " let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='solarized'
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1
 set guifont=Cousine\ for\ Powerline
 let g:Powerline_symbols='fancy'
 
@@ -289,6 +292,29 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
 " }}}
+" -----YouCompleteMe -----{{{
+" 代码补全插件
+Plugin 'Valloric/YouCompleteMe'
+"  }}}
+" ----- 缩进指示线、自动格式化工、括号和引号自动补全，输入左引号和左括号自动补全另外一半 {{{
+Plugin 'Yggdroot/indentLine' "缩进指示线
+let g:indentLine_color_gui = '#A4E57E'
+let g:indentLine_char = '|'
+let g:indentLine_enabled = 0 "默认打开
+Plugin 'jiangmiao/auto-pairs' "括号和引号自动补全
+Plugin 'tell-k/vim-autopep8' "自动格式化
+"缩进指示线"
+let g:indentLine_char='┆'
+let g:indentLine_enabled = 1
+
+"autopep8设置"
+let g:autopep8_disable_show_diff=1
+Plugin 'scrooloose/nerdcommenter' " 方便的写注释
+
+map <F4> <leader>ci <CR>
+" 多行注释只需要在normal模式下按v并移动光标选择需要注释的行,再按F4就可以为所有选中的行添加注释。
+" }}}
+
 
 filetype on
 call vundle#end()
