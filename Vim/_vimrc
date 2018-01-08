@@ -252,7 +252,10 @@ let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:10'
 set wildignore+=*\\.git\\*,*\\tmp\\*,*.swp,*.zip,*.exe,*.pyc
 " }}}
 " ----- Nerdcommenter ----- {{{
-Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdcommenter' " 方便的写注释
+map <F4> <leader>ci <CR>
+" 多行注释只需要在normal模式下按v并移动光标选择需要注释的行,再按F4就可以为所有选中的行添加注释。
+
 " }}}
 " ----- Emmet ----- {{{
 Plugin 'mattn/emmet-vim'
@@ -299,20 +302,16 @@ Plugin 'Valloric/YouCompleteMe'
 " ----- 缩进指示线、自动格式化工、括号和引号自动补全，输入左引号和左括号自动补全另外一半 {{{
 Plugin 'Yggdroot/indentLine' "缩进指示线
 let g:indentLine_color_gui = '#A4E57E'
-let g:indentLine_char = '|'
 let g:indentLine_enabled = 0 "默认打开
-Plugin 'jiangmiao/auto-pairs' "括号和引号自动补全
-Plugin 'tell-k/vim-autopep8' "自动格式化
-"缩进指示线"
-let g:indentLine_char='┆'
+let g:indentLine_char='|'
 let g:indentLine_enabled = 1
 
+Plugin 'jiangmiao/auto-pairs' "括号和引号自动补全
+
+Plugin 'tell-k/vim-autopep8' "自动格式化
+" 运行命令 :autopep8 就可以排版了
 "autopep8设置"
 let g:autopep8_disable_show_diff=1
-Plugin 'scrooloose/nerdcommenter' " 方便的写注释
-
-map <F4> <leader>ci <CR>
-" 多行注释只需要在normal模式下按v并移动光标选择需要注释的行,再按F4就可以为所有选中的行添加注释。
 " }}}
 
 
